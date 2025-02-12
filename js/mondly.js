@@ -1854,7 +1854,7 @@ objc = {
             "role": "12month",
             "is_grace_period": false,
             "is_auto_renewing": false,
-            "expiration_date": 1670665666,
+            "expiration_date": 1765360066,
             "is_billing_retry_period": false,
             "is_initial_purchase": false,
             "is_in_free_trial_period": true,
