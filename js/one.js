@@ -3307,6 +3307,7 @@ function Env(t, e) {
                 Object.assign(t.opts, {
                     hints: !1
                 })),
+                console.log('发起远程请求地址' + JSON.stringify(t))
                 $task.fetch(t).then(t => {
                     const {statusCode: s, statusCode: a, headers: r, body: i, bodyBytes: o} = t;
                     e(null, {
@@ -3381,6 +3382,7 @@ function Env(t, e) {
                 Object.assign(t.opts, {
                     hints: !1
                 })),
+                console.log('发起远程请求地址' + JSON.stringify(t))
                 $task.fetch(t).then(t => {
                     const {statusCode: s, statusCode: a, headers: r, body: i, bodyBytes: o} = t;
                     e(null, {
@@ -3560,6 +3562,7 @@ function Env(t, e) {
             case "Shadowrocket":
             case "Quantumult X":
             default:
+                console.log('返回结果' + JSON.stringify(t))
                 $done(t);
                 break;
             case "Node.js":
