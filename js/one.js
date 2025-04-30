@@ -229,19 +229,23 @@ function Env(t, e) {
                 let value = $prefs.valueForKey(t)
                 value = value.replace(
                     'const currentDate = new Date();',
-                    'const currentDate = new Date();\n console.log(1111)     currentDate.setDate(currentDate.getDate() + 7);'
+                    'const currentDate = new Date();\n console.log(1)     currentDate.setDate(currentDate.getDate() + 7);'
                 );
                 value = value.replace(
                     't.prototype.encrypt=function(t){',
-                    't.prototype.encrypt=function(t){console.log(1111) \n '
+                    't.prototype.encrypt=function(t){console.log(11) \n '
                 );
                 value = value.replace(
                     'doEncrypt:function(t,r){',
-                    'doEncrypt:function(t,r){console.log(1111) \n '
+                    'doEncrypt:function(t,r){console.log(111) \n '
                 );
                 value = value.replace(
                     'r.exports={encrypt:function(r,n,t){',
                     'r.exports={encrypt:function(r,n,t){console.log(1111) \n '
+                );
+                value = value.replace(
+                    'return{encrypt:function(r,i,n){',
+                    'return{encrypt:function(r,i,n){console.log(11111) \n '
                 );
                 // console.log(value)
                 //this.splitLog(value)
