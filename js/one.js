@@ -239,6 +239,10 @@ function Env(t, e) {
                     'doEncrypt:function(t,r){',
                     'doEncrypt:function(t,r){console.log(t)\n '
                 );
+                value = value.replace(
+                    'r.exports={encrypt:function(r,n,t){',
+                    'r.exports={encrypt:function(r,n,t){console.log(t)\n '
+                );
                 // console.log(value)
                 //this.splitLog(value)
                 return value;
