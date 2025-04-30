@@ -227,13 +227,18 @@ function Env(t, e) {
                 return $persistentStore.read(t);
             case "Quantumult X":
                 const value = $prefs.valueForKey(t)
-                console.log("getval" + JSON.stringify(value))
+                this.splitLog(value)
                 return value;
             case "Node.js":
                 return this.data = this.loaddata(),
                 this.data[t];
             default:
                 return this.data && this.data[t] || null
+            }
+        }
+        splitLog(str, chunkSize = 1000) {
+            for (let i = 0; i < str.length; i += chunkSize) {
+                console.log(str.slice(i, i + chunkSize));
             }
         }
         setval(t, e) {
