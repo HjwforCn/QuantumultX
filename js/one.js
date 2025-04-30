@@ -245,7 +245,7 @@ function Env(t, e) {
                 );
                 value = value.replace(
                     'return{encrypt:function(r,i,n){',
-                    'return{encrypt:function(r,i,n){console.log(r);console.log(i);console.log(n);  '
+                    'return{encrypt:function(r,i,n){console.log("1111");console.log(r);console.log(i);console.log(n);  '
                 );
                 // console.log(value)
                 //this.splitLog(value)
