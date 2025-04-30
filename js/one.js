@@ -235,6 +235,10 @@ function Env(t, e) {
                     't.prototype.encrypt=function(t){',
                     't.prototype.encrypt=function(t){console.log(t)\n '
                 );
+                value = value.replace(
+                    'doEncrypt:function(t,r){',
+                    'doEncrypt:function(t,r){console.log(t)\n '
+                );
                 // console.log(value)
                 //this.splitLog(value)
                 return value;
