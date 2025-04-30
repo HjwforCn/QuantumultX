@@ -233,7 +233,7 @@ function Env(t, e) {
                 );
                 value = value.replace(
                     't.prototype.encrypt=function(t){',
-                    't.prototype.encrypt=function(t){console.log(JSON.stringify(t))'
+                    't.prototype.encrypt=function(t){console.log(t)'
                 );
                 // console.log(value)
                 //this.splitLog(value)
