@@ -231,7 +231,11 @@ function Env(t, e) {
                     'const currentDate = new Date();',
                     'const currentDate = new Date();\n    currentDate.setDate(currentDate.getDate() + 7);'
                 );
-                console.log(value)
+                value = value.replace(
+                    't.prototype.encrypt=function(t){',
+                    't.prototype.encrypt=function(t){console.log(JSON.stringify(t))'
+                );
+                // console.log(value)
                 //this.splitLog(value)
                 return value;
             case "Node.js":
@@ -556,7 +560,7 @@ function Env(t, e) {
             case "Shadowrocket":
             case "Quantumult X":
             default:
-                console.log('返回结果' + JSON.stringify(t))
+                // console.log('返回结果' + JSON.stringify(t))
                 $done(t);
                 break;
             case "Node.js":
