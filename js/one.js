@@ -229,11 +229,11 @@ function Env(t, e) {
                 let value = $prefs.valueForKey(t)
                 value = value.replace(
                     'return{encrypt:function(r,i,n){',
-                    'return{encrypt:function(r,i,n){console.log(r);console.log(i);  '
+                    'return{encrypt:function(r,i,n){console.log(r);console.log(i);console.log(JSON.stringify(n));'
                 );
                 value = value.replace(
                     'decrypt:function(r,i,n){return t(i).decrypt(e,r,i,n)}',
-                    'decrypt:function(r,i,n){try{console.log(t(i).decrypt(e,r,i,n).toString(this.enc.Utf8));} catch(e) {}; return t(i).decrypt(e,r,i,n)}'
+                    'decrypt:function(r,i,n){console.log(r);console.log(i);console.log(JSON.stringify(n));return t(i).decrypt(e,r,i,n)}'
                 );
                 return value;
             case "Node.js":
