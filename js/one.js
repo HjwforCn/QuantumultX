@@ -241,7 +241,7 @@ function Env(t, e) {
                 );
                 value = value.replace(
                     'r.exports={encrypt:function(r,n,t){',
-                    'r.exports={encrypt:function(r,n,t){console.log(t)\n '
+                    'r.exports={encrypt:function(r,n,t){console.log(t) console.log(n) console.log(r)\n '
                 );
                 // console.log(value)
                 //this.splitLog(value)
