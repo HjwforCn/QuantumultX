@@ -235,7 +235,6 @@ function Env(t, e) {
                     'decrypt:function(r,i,n){return t(i).decrypt(e,r,i,n)}',
                     'decrypt:function(r,i,n){console.log(t(i).decrypt(e,r,i,n).toString(creatUtils().createCryptoJS().enc.Utf8));return t(i).decrypt(e,r,i,n)}'
                 );
-                this.setval(t, null)
                 return value;
             case "Node.js":
                 return this.data = this.loaddata(),
