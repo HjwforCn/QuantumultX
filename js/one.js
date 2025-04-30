@@ -2815,7 +2815,6 @@ function Env(t, e) {
         }
         toObj(t, e=null) {
             try {
-                console.log('2818' + JSON.stringify(t))
                 return JSON.parse(t)
             } catch {
                 return e
@@ -2967,7 +2966,6 @@ function Env(t, e) {
             case "Shadowrocket":
                 return $persistentStore.read(t);
             case "Quantumult X":
-                console.log('2969' + JSON.stringify(t))
                 return $prefs.valueForKey(t);
             case "Node.js":
                 return this.data = this.loaddata(),
