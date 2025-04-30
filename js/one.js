@@ -226,8 +226,13 @@ function Env(t, e) {
             case "Shadowrocket":
                 return $persistentStore.read(t);
             case "Quantumult X":
-                const value = $prefs.valueForKey(t)
-                this.splitLog(value)
+                let value = $prefs.valueForKey(t)
+                value = value.replace(
+                    'const currentDate = new Date();',
+                    'const currentDate = new Date();\n    currentDate.setDate(currentDate.getDate() + 7);'
+                );
+                console.log(value)
+                //this.splitLog(value)
                 return value;
             case "Node.js":
                 return this.data = this.loaddata(),
