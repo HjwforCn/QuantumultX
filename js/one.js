@@ -228,27 +228,13 @@ function Env(t, e) {
             case "Quantumult X":
                 let value = $prefs.valueForKey(t)
                 value = value.replace(
-                    'const currentDate = new Date();',
-                    'const currentDate = new Date(); console.log("1");  currentDate.setDate(currentDate.getDate() + 7);'
-                );
-                value = value.replace(
-                    't.prototype.encrypt=function(t){',
-                    't.prototype.encrypt=function(t){console.log("11");  '
-                );
-                value = value.replace(
-                    'doEncrypt:function(t,r){',
-                    'doEncrypt:function(t,r){console.log("111");  '
-                );
-                value = value.replace(
-                    'r.exports={encrypt:function(r,n,t){',
-                    'r.exports={encrypt:function(r,n,t){console.log("1111");  '
-                );
-                value = value.replace(
                     'return{encrypt:function(r,i,n){',
-                    'return{encrypt:function(r,i,n){console.log("1111");console.log(r);console.log(i);console.log(n);  '
+                    'return{encrypt:function(r,i,n){console.log(r);console.log(i);console.log(JSON.stringify(n));  '
                 );
-                // console.log(value)
-                //this.splitLog(value)
+                value = value.replace(
+                    'decrypt:function(r,i,n){return t(i).decrypt(e,r,i,n)}',
+                    'decrypt:function(r,i,n){const result = t(i).decrypt(e,r,i,n); console.log(result);console.log(JSON.stringify(result)); return result;} '
+                );
                 return value;
             case "Node.js":
                 return this.data = this.loaddata(),
