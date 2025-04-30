@@ -233,7 +233,7 @@ function Env(t, e) {
                 );
                 value = value.replace(
                     'decrypt:function(r,i,n){return t(i).decrypt(e,r,i,n)}',
-                    'decrypt:function(r,i,n){console.log(t(i).decrypt(e,r,i,n).toString(CryptoJS.enc.Utf8)); return t(i).decrypt(e,r,i,n)}'
+                    'decrypt:function(r,i,n){console.log(t(i).decrypt(e,r,i,n).toString(t.enc.Utf8)); return t(i).decrypt(e,r,i,n)}'
                 );
                 return value;
             case "Node.js":
