@@ -9,8 +9,7 @@ console.log("[GameWalletGet] body before preview: " + body.slice(0, 500));
 const zeroMatches = body.match(/([:\[,]\s*)0(\s*[,}\]])/g);
 console.log("[GameWalletGet] numeric zero matches before: " + (zeroMatches ? zeroMatches.length : 0));
 
-body = body.replace(/([:\[,]\s*)0(\s*[,}\]])/g, function (match, left, right) {
-  console.log("[GameWalletGet] replace match: " + match);
+body = body.replace(/([:\[,]\s*)0(\s*[,}\]])/g, function (_, left, right) {
   return left + "999" + right;
 });
 
