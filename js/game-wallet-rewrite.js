@@ -1,24 +1,48 @@
 let body = $response.body || "";
 
-console.log("[GameWalletGet] script start");
-console.log("[GameWalletGet] url: " + $request.url);
-console.log("[GameWalletGet] body exists: " + Boolean($response.body));
-console.log("[GameWalletGet] body length before: " + body.length);
-console.log("[GameWalletGet] body before preview: " + body.slice(0, 500));
+console.log("[GameWalletGet] start url=" + $request.url);
+console.log("[GameWalletGet] before body=" + body);
 
-const zeroMatches = body.match(/([:\[,]\s*)0(\s*[,}\]])/g);
-console.log("[GameWalletGet] numeric zero matches before: " + (zeroMatches ? zeroMatches.length : 0));
+function replaceZero(value) {
+  if (typeof value === "number" && value === 0) {
+    return 999;
+  }
 
-body = body.replace(/([:\[,]\s*)0(\s*[,}\]])/g, function (_, left, right) {
-  return left + "999" + right;
-});
+  if (Array.isArray(value)) {
+    return value.map(replaceZero);
+  }
 
-const nineMatches = body.match(/([:\[,]\s*)999(\s*[,}\]])/g);
-console.log("[GameWalletGet] numeric 999 matches after: " + (nineMatches ? nineMatches.length : 0));
-console.log("[GameWalletGet] body length after: " + body.length);
-console.log("[GameWalletGet] body after preview: " + body.slice(0, 500));
-console.log("[GameWalletGet] script done");
+  if (value && typeof value === "object") {
+    for (const key of Object.keys(value)) {
+      value[key] = replaceZero(value[key]);
+    }
+    return value;
+  }
 
-$done({
-  body: body
-});
+  return value;
+}
+
+try {
+  const data = JSON.parse(body);
+  const rewritten = replaceZero(data);
+  const newBody = JSON.stringify(rewritten);
+
+  console.log("[GameWalletGet] after body=" + newBody);
+
+  $done({
+    body: newBody
+  });
+} catch (e) {
+  console.log("[GameWalletGet] JSON parse failed: " + e.message);
+
+  const zeroNumberReg = /([:\[,]\s*)0(?:\.0+)?(\s*[,}\]])/g;
+  body = body.replace(zeroNumberReg, function (_, left, right) {
+    return left + "999" + right;
+  });
+
+  console.log("[GameWalletGet] after fallback body=" + body);
+
+  $done({
+    body: body
+  });
+}
