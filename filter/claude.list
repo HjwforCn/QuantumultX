@@ -1,0 +1,56 @@
+# Claude AI 代理规则（Quantumult X）
+# 规则来源：2026-04-10 版本；整理日期：2026-10-22
+# 默认使用 proxy；可通过远程资源的 force-policy 指定已有策略组。
+# 使用 Quantumult X 原生三列格式，不携带 Surge 的 no-resolve 参数。
+
+# 核心域名
+host-suffix, claude.ai, proxy
+host-suffix, anthropic.com, proxy
+host-suffix, claude.com, proxy
+host-suffix, clau.de, proxy
+host-suffix, claudeusercontent.com, proxy
+host-suffix, claudemcpclient.com, proxy
+
+# CDN 与静态资源
+host, servd-anthropic-website.b-cdn.net, proxy
+host, anthropic.com.cdn.cloudflare.net, proxy
+host, cdn.usefathom.com, proxy
+
+# 认证与内容
+host, anthropic.auth0.com, proxy
+host, anthropic-com.ghost.io, proxy
+
+# 监控与遥测：Datadog RUM
+host, browser-intake-us5-datadoghq.com, proxy
+host-keyword, datadoghq, proxy
+
+# 客服：Intercom
+host-suffix, intercom.io, proxy
+host-suffix, intercomcdn.com, proxy
+
+# 功能开关：Statsig
+host-suffix, statsigapi.net, proxy
+
+# 错误追踪：Sentry
+host-suffix, sentry.io, proxy
+
+# 反欺诈：Sift
+host-keyword, sift, proxy
+
+# Google 静态资源
+host, t0.gstatic.com, proxy
+host, t1.gstatic.com, proxy
+host, t2.gstatic.com, proxy
+host, t3.gstatic.com, proxy
+
+# Claude Code 更新与下载
+host, storage.googleapis.com, proxy
+
+# Anthropic IP 范围
+ip-cidr, 160.79.104.0/21, proxy
+ip6-cidr, 2607:6bc0::/32, proxy
+ip-asn, 399358, proxy
+
+# 关键字兜底
+host-keyword, claude, proxy
+host-keyword, anthropic, proxy
